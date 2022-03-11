@@ -41,6 +41,20 @@ export default function Countries() {
             data.capital &&
             data.capital.toLowerCase().includes(search.toLocaleLowerCase())
           ) {
+            var string = data.capital;
+            var letters = {
+              İ: "i",
+              I: "ı",
+              Ş: "ş",
+              Ğ: "ğ",
+              Ü: "ü",
+              Ö: "ö",
+              Ç: "ç",
+            };
+            string = string.replace(/(([İIŞĞÜÇÖ]))/g, function (letter) {
+              //turkish character fixing
+              return letters[letter];
+            });
             return data;
           } else if (
             //searching al datas with their names
